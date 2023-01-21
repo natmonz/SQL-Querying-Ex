@@ -1,0 +1,5 @@
+-- FS1. Find the name and rating of the top rated apps in each category, among apps that have been installed at least 50,000 times.
+    SELECT app_name, rating, category FROM analytics WHERE (rating, category)
+    IN (SELECT MAX(rating), category FROM analytics WHERE min_installs >= 50000 GROUP BY category);
+-- FS2. Find all the apps that have a name similar to “facebook”.
+    SELECT * FROM analytics WHERE app_name ILIKE '%facebook%';
